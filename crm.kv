@@ -1,0 +1,77 @@
+<CrmLogin>:
+    f_username: username
+    f_password: password
+    orientation: 'lr-tb'
+    StackLayout:
+        size_hint: 0.8, 1
+        orientation: 'tb-lr'
+        FloatLayout:
+            size_hint: 1, .5
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            canvas.after:
+                Line:
+                    rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                    dash_offset: 5
+                    dash_length: 3
+
+            Label:
+                text: "Username:"
+                color: 0,0,0,1
+                size_hint: 0.5, 1
+                pos_hint: {"x": 0, "y": 0}
+
+            TextInput:
+                write_tab: False
+                id: username
+                size_hint: 0.4, 0.3
+                pos_hint: {"x": 0.5, "y": 0.35}
+
+
+
+        FloatLayout:
+            size_hint: 1, .5
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            canvas.after:
+                Line:
+                    rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+                    dash_offset: 5
+                    dash_length: 3
+
+            Label:
+                text: "Password:"
+                color: 0,0,0,1
+                size_hint: 0.5, 1
+                pos_hint: {"x": 0, "y": 0}
+
+            TextInput:
+                write_tab: False
+                id: password
+                size_hint: 0.4, 0.3
+                pos_hint: {"x": 0.5, "y": 0.35}
+                password: True
+
+    StackLayout:
+        size_hint: 0.2, 1
+
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Button:
+            text: "Login"
+            on_press: root.login(root.f_username, root.f_password)
