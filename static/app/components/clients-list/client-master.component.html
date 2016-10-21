@@ -1,0 +1,10 @@
+<div class="leftPane">
+    <a href=""></a>
+    <clients-list></clients-list>
+</div>
+
+<div class="rightPane">
+    <router-outlet></router-outlet>
+    <client-detail *ngIf="detailOrNew"></client-detail>
+    <div>Please select a client or <span><a href="">create new</a></span></div>
+</div>

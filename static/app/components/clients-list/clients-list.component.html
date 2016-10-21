@@ -1,0 +1,8 @@
+<div>
+    <ul>
+        <li *ngFor="let client of clients">
+            <span>{{ client.first_name }} {{ client.last_name }}</span>
+            <button (click)="deleteClient(client)">Delete</button>
+        </li>
+    </ul>
+</div>
