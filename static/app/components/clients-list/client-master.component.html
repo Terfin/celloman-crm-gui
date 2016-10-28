@@ -1,10 +1,18 @@
-<div class="leftPane">
-    <a href=""></a>
-    <clients-list></clients-list>
-</div>
+<div class="Flexbox">
+    <div class="leftPane Flexbox__flex-2">
+        <div class="Flexbox">
+            <div class="Flexbox__flex-2"></div>
+            <div class="Flexbox__flex-8 btn btn-crm">
+                <a routerLink="new" routerLinkActive="active" class="link">Create New</a>
+            </div>
+            <div class="Flexbox__flex-2"></div>
+        </div>
 
-<div class="rightPane">
-    <router-outlet></router-outlet>
-    <client-detail *ngIf="detailOrNew"></client-detail>
-    <div>Please select a client or <span><a href="">create new</a></span></div>
+        <clients-list></clients-list>
+    </div>
+
+    <div class="rightPane Flexbox__flex-10">
+        <router-outlet></router-outlet>
+
+    </div>
 </div>

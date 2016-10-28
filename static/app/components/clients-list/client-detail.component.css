@@ -1,0 +1,46 @@
+.formTitle {
+    border-bottom: 3px solid gray;
+    margin-bottom: 5px;
+}
+
+.formTitle h2 {
+    color: gray;
+    font-weight: bold;
+}
+
+.inputContainer {
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+
+.inputContainer button {
+    padding: 5px 15px;
+    border: none;
+    border-bottom: 2px solid #4173a6;
+    background-color: #CED6DD;
+    font-size: 16px;
+    color: #565656;
+}
+
+.inputContainer button:hover {
+    color: #3A3A3A;
+    background-color: #B8BDC1;
+    border-color: #657c8e;
+}
+
+.inputContainer label {
+    font-weight: bold;
+
+}
+
+.inputContainer input[type=text], .inputContainer input[type=tel] {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+.inputContainer input[type=text]:focus, .inputContainer input[type=tel]:focus {
+    outline: none;
+    border: 1px solid darkgray;
+}

@@ -1,5 +1,15 @@
-<h1>{{ title }}</h1>
+<div class="title">
+    <h1>{{ title }}</h1>
+</div>
 <nav>
-    <a routerLink="/clients" routerLinkActive="active">Client List</a>
+    <a routerLink="/dashboard" routerLinkActive="active">
+        <div>Home</div>
+    </a>
+    <a routerLink="/clients" routerLinkActive="active">
+        <div>Client List</div>
+    </a>
+
 </nav>
-<router-outlet></router-outlet>
+<div class="outlet">
+    <router-outlet></router-outlet>
+</div>

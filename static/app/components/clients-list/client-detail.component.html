@@ -1,0 +1,65 @@
+<div *ngIf="isLoading">
+    <i class="fa fa-spinner fa-spin fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+</div>
+<form #clientForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+    <div class="formTitle">
+        <h2>{{ formTitle }}</h2>
+    </div>
+
+    <div class="Flexbox">
+        <div class="inputContainer Flexbox__flex-3 Flexbox">
+            <label for="id" class="Flexbox__flex-1">SYS ID:</label>
+            <input type="text" [(ngModel)]="client.id" id="id" name="id" disabled class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-1 inputContainer"></div>
+        <div class="inputContainer Flexbox__flex-3 Flexbox">
+            <label for="joined" class="Flexbox__flex-1">Date Joined:</label>
+            <input type="text" [(ngModel)]="client.date_joined" id="joined" name="joined" disabled class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-1 inputContainer"></div>
+        <div class="inputContainer Flexbox__flex-3 Flexbox">
+            <label for="calls" class="Flexbox__flex-1">Calls to Center:</label>
+            <input type="text" [(ngModel)]="client.calls_to_center" id="calls" name="calls" disabled class="Flexbox__flex-1">
+        </div>
+        <div class="Flexbox__flex-1"></div>
+    </div>
+    <div class="Flexbox">
+        <div class="inputContainer Flexbox__flex-3 Flexbox requiredInput">
+            <label for="fName" class="Flexbox__flex-1">First Name:</label>
+            <input type="text" [(ngModel)]="client.first_name" name="fName" id="fName" required class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-1 inputContainer"></div>
+        <div class="inputContainer Flexbox__flex-3 Flexbox requiredInput">
+            <label for="address" class="Flexbox__flex-1">Address:</label>
+            <input type="text" [(ngModel)]="client.address" name="address" id="address" required class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-5"></div>
+    </div>
+    <div class="Flexbox">
+        <div class="inputContainer Flexbox__flex-3 Flexbox requiredInput">
+            <label for="lName" class="Flexbox__flex-1">Last Name:</label>
+            <input type="text" [(ngModel)]="client.last_name" name="lName" id="lName" required class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-1 inputContainer"></div>
+        <div class="inputContainer Flexbox__flex-3 Flexbox requiredInput">
+            <label for="phone" class="Flexbox__flex-1">Phone #:</label>
+            <input type="tel" [(ngModel)]="client.contact_number" name="phone" id="phone" required class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-5"></div>
+    </div>
+    <div class="Flexbox">
+        <div class="inputContainer Flexbox__flex-3 Flexbox">
+            <label for="userName" class="Flexbox__flex-1">Username:</label>
+            <input type="text" [(ngModel)]="client.username" name="userName" id="userName" (keyup)="validateUserName()" class="Flexbox__flex-2">
+        </div>
+        <div class="Flexbox__flex-9"></div>
+    </div>
+    <div class="Flexbox">
+        <div class="inputContainer Flexbox__flex-3">
+            <button type="submit">Submit</button>
+            <button type="reset" (click)="resetClient(clientForm)">Reset</button>
+        </div>
+        <div class="Flexbox__flex-9"></div>
+    </div>
+
+</form>

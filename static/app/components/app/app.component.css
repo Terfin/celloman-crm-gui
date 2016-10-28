@@ -1,0 +1,40 @@
+div.title {
+    border-bottom: 2px solid slategray;
+    margin-bottom: 5px;
+    height: 10%;
+}
+
+nav {
+    background-color: lightskyblue;
+    display: flex;
+    flex: 12;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+nav div {
+    padding: 5px;
+    background-color: #AAAAAA;
+    color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+nav div:hover, nav a.active div  {
+    background-color: #555555;
+    color: white;
+}
+
+nav a.active div {
+    border: 1px dashed white;
+}
+
+nav a {
+    text-decoration: none;
+
+}
+
+nav a:visited {
+    color: inherit;
+}

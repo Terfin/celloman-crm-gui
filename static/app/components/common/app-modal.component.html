@@ -1,0 +1,13 @@
+<modal #modal>
+    <modal-header>
+        {{ header }}
+    </modal-header>
+
+    <modal-body>
+        <div [innerHTML]="body"></div>
+    </modal-body>
+
+    <modal-footer>
+        <button *ngFor="let button of buttons" (click)="close(button)" class="btn" [ngClass]="button.cssClass">{{ button.label }}</button>
+    </modal-footer>
+</modal>

@@ -9,15 +9,109 @@ h2, h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
+html {
+  height: 100%;
+}
 body {
   margin: 2em;
+  height: 100%;
 }
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
+
 }
 /* . . . */
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.Flexbox {
+    display: flex;
+}
+
+.Flexbox__flex-1 {
+    flex: 1;
+}
+
+.Flexbox__flex-2 {
+    flex: 2;
+}
+
+.Flexbox__flex-3 {
+    flex: 3;
+}
+
+.Flexbox__flex-4 {
+    flex: 4;
+}
+
+.Flexbox__flex-5 {
+    flex: 5;
+}
+
+.Flexbox__flex-6 {
+    flex: 6;
+}
+
+.Flexbox__flex-7 {
+    flex: 7;
+}
+
+.Flexbox__flex-8 {
+    flex: 8;
+}
+
+.Flexbox__flex-9 {
+    flex: 9;
+}
+.Flexbox__flex-10 {
+    flex: 10;
+}
+
+.Flexbox__flex-11 {
+    flex: 11;
+}
+
+.Flexbox__flex-12 {
+    flex: 12;
+}
+
+div.requiredInput label:before {
+    content: '*';
+    color: red;
+    padding: 2px;
+}
+
+.btn .link {
+    text-decoration: none;
+}
+
+.btn-success .link, .btn-primary .link, .btn-danger .link, .btn-warning .link, .btn-info .link {
+    color: white;
+}
+
+.btn-default .link {
+    color: black;
+}
+
+.btn-crm {
+    background-color: #CED6DD;
+    border: none !important;
+    border-bottom: 2px solid #4173a6 !important;
+}
+
+.btn-crm:hover {
+    background-color: #B8BDC1;
+    border-color: #657c8e !important;
+}
+
+.btn-crm .link {
+    color: #565656;
+}
+
+.btn-crm:hover .link {
+    color: #3A3A3A;
 }

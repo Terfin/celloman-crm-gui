@@ -1,8 +1,21 @@
-<div>
-    <ul>
-        <li *ngFor="let client of clients">
-            <span>{{ client.first_name }} {{ client.last_name }}</span>
-            <button (click)="deleteClient(client)">Delete</button>
-        </li>
-    </ul>
+<div class="Flexbox">
+    <div class="Flexbox__flex-11">
+        <ul>
+            <li *ngFor="let client of clients" class="Flexbox client-item">
+
+                    <div class="Flexbox__flex-10">
+                        <span>{{ client.first_name }} {{ client.last_name }}</span>
+                    </div>
+                    <div class="Flexbox__flex-2">
+                        <span (click)="deleteClient(client)" class="remove-btn" title="Delete Client">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+
+            </li>
+        </ul>
+    </div>
+    <div class="Flexbox__flex-1"></div>
 </div>
+<app-modal #modal></app-modal>

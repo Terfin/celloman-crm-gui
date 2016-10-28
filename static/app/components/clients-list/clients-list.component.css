@@ -1,0 +1,23 @@
+li.client-item {
+    padding: 5px;
+}
+
+span.remove-btn {
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 0 2px;
+    background-color: #CED6DD;
+    cursor: pointer;
+}
+
+span.remove-btn:hover {
+    background-color: #312922;
+}
+
+span.remove-btn i {
+    color: #FF6F00;
+}
+
+span.remove-btn:hover i {
+    color: #0090FF;
+}

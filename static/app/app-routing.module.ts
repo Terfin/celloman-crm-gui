@@ -1,15 +1,21 @@
 import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ClientMasterComponent, ClientDetailComponent} from './components/clients-list/clients-list.component';
+import {ClientMasterComponent} from './components/clients-list/clients-list.component';
+import {ClientListRoutingModule} from './components/clients-list/client-list-routing.module';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {LoginComponent} from './components/login/login.component';
+import {AuthGuard, IndexAuthGuard} from "./AuthGuard";
+
 const routes:Routes = [
-    {path: '', redirectTo: '/clients', pathMatch: 'full'},
-    {path: 'clients', component: ClientMasterComponent, children: [
-        {path: ':id', component: ClientDetailComponent}
-    ]}
+    {path: '',  redirectTo: '/dashboard', pathMatch: 'full' },
+    {path: 'login', component: LoginComponent },
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    {path: 'clients', component: ClientMasterComponent, children: ClientListRoutingModule.routes, canActivate: [AuthGuard]},
+    {path: '*', redirectTo: '/login', pathMatch: 'full'},
 
 ];
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

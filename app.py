@@ -8,7 +8,8 @@ def main(path):
 
 @app.errorhandler(404)
 def other(e):
+    print(e)
     return render_template('main.html')
 
 if __name__ == '__main__':
-    app.run(port=5001)
+    app.run(port=8002)

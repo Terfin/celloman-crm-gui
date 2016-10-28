@@ -5,6 +5,7 @@
 (function (global) {
   System.config({
     baseURL: '/static',
+    defaultJSExtensions: true,
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/'
@@ -25,6 +26,7 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'ng2-bs3-modal': 'node_modules/ng2-bs3-modal',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
