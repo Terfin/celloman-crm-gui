@@ -52,7 +52,14 @@
             <label for="userName" class="Flexbox__flex-1">Username:</label>
             <input type="text" [(ngModel)]="client.username" name="userName" id="userName" (keyup)="validateUserName()" class="Flexbox__flex-2">
         </div>
-        <div class="Flexbox__flex-9"></div>
+        <div class="Flexbox__flex-1 inputContainer"></div>
+        <div class="inputContainer Flexbox__flex-3 Flexbox requiredInput">
+            <label for="client-type" class="Flexbox__flex-1">Client Type:</label>
+            <select name="client-type" id="client-type" [(ngModel)]="client.type" required class="Flexbox__flex-2">
+                <option *ngFor="let clientTypes of clientTypes" [value]="clientTypes.id">{{ clientTypes.name }}</option>
+            </select>
+        </div>
+        <div class="Flexbox__flex-5"></div>
     </div>
     <div class="Flexbox">
         <div class="inputContainer Flexbox__flex-3">

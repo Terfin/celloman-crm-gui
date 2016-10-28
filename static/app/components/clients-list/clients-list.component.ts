@@ -3,6 +3,8 @@ import {Client} from '../models/client';
 import {ClientService} from './client.service';
 import {RouterState, Router, ActivatedRoute, Params} from "@angular/router";
 import {AppModalComponent, AppModalConfiguration, ModalButton} from "../common/app-modal.component";
+import {ClientTypeService} from "./client-type.service";
+import {ClientType} from "../models/client-type";
 
 
 
@@ -78,6 +80,7 @@ export class ClientDetailComponent {
 
     formTitle: string;
     isLoading: boolean;
+    clientTypes: ClientType[];
 
     private populateClient(client) {
         this.client.id = client.id;
@@ -88,6 +91,7 @@ export class ClientDetailComponent {
         this.client.address = client.address;
         this.client.username = client.username;
         this.client.calls_to_center = client.calls_to_center;
+        this.client.type = client.type;
         this.formTitle = `${this.client.first_name} ${this.client.last_name} Details`;
         this.isLoading = false;
     }
@@ -95,6 +99,11 @@ export class ClientDetailComponent {
     ngOnInit () {
         this.isLoading = true;
         let state : RouterState = this.router.routerState;
+
+        this.clientTypeService.getClientTypes().then(clientTypes => {
+            this.clientTypes = clientTypes;
+        });
+
         if (state.snapshot.url.endsWith('new')) {
             this.formTitle = 'New Customer Details';
             this.isLoading = false;
@@ -102,7 +111,7 @@ export class ClientDetailComponent {
         else {
             this.route.params.forEach((params: Params) => {
                 let id = +params['id'];
-                this.service.getClient(id).then(client => {
+                this.clientService.getClient(id).then(client => {
                     this.populateClient(client);
                 });
 
@@ -111,7 +120,7 @@ export class ClientDetailComponent {
         }
     }
 
-    constructor(private service:ClientService, private router: Router, private route: ActivatedRoute) {
+    constructor(private clientService:ClientService, private clientTypeService:ClientTypeService, private router: Router, private route: ActivatedRoute) {
 
     }
 
@@ -123,12 +132,12 @@ export class ClientDetailComponent {
     onSubmit() {
         let state : RouterState = this.router.routerState;
         if (state.snapshot.url.endsWith('new')) {
-            this.service.createClient(this.client).then(
+            this.clientService.createClient(this.client).then(
                 client => this.router.navigate(['/clients', client.id])
             );
         }
         else {
-            this.service.updateClient(this.client).then(
+            this.clientService.updateClient(this.client).then(
                 client => {
                     this.client.id = client.id;
                     this.client.first_name = client.first_name;
@@ -152,7 +161,7 @@ export class ClientDetailComponent {
         else {
             this.route.params.forEach((params: Params) => {
                 let id = +params['id'];
-                this.service.getClient(id).then(client => {
+                this.clientService.getClient(id).then(client => {
                     this.populateClient(client);
                 });
 

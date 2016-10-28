@@ -13,6 +13,7 @@ var client_1 = require('../models/client');
 var client_service_1 = require('./client.service');
 var router_1 = require("@angular/router");
 var app_modal_component_1 = require("../common/app-modal.component");
+var client_type_service_1 = require("./client-type.service");
 var ClientMasterComponent = (function () {
     function ClientMasterComponent() {
     }
@@ -72,8 +73,9 @@ var ClientListComponent = (function () {
 }());
 exports.ClientListComponent = ClientListComponent;
 var ClientDetailComponent = (function () {
-    function ClientDetailComponent(service, router, route) {
-        this.service = service;
+    function ClientDetailComponent(clientService, clientTypeService, router, route) {
+        this.clientService = clientService;
+        this.clientTypeService = clientTypeService;
         this.router = router;
         this.route = route;
         this.client = new client_1.Client();
@@ -87,6 +89,7 @@ var ClientDetailComponent = (function () {
         this.client.address = client.address;
         this.client.username = client.username;
         this.client.calls_to_center = client.calls_to_center;
+        this.client.type = client.type;
         this.formTitle = this.client.first_name + " " + this.client.last_name + " Details";
         this.isLoading = false;
     };
@@ -94,6 +97,9 @@ var ClientDetailComponent = (function () {
         var _this = this;
         this.isLoading = true;
         var state = this.router.routerState;
+        this.clientTypeService.getClientTypes().then(function (clientTypes) {
+            _this.clientTypes = clientTypes;
+        });
         if (state.snapshot.url.endsWith('new')) {
             this.formTitle = 'New Customer Details';
             this.isLoading = false;
@@ -101,7 +107,7 @@ var ClientDetailComponent = (function () {
         else {
             this.route.params.forEach(function (params) {
                 var id = +params['id'];
-                _this.service.getClient(id).then(function (client) {
+                _this.clientService.getClient(id).then(function (client) {
                     _this.populateClient(client);
                 });
             });
@@ -113,10 +119,10 @@ var ClientDetailComponent = (function () {
         var _this = this;
         var state = this.router.routerState;
         if (state.snapshot.url.endsWith('new')) {
-            this.service.createClient(this.client).then(function (client) { return _this.router.navigate(['/clients', client.id]); });
+            this.clientService.createClient(this.client).then(function (client) { return _this.router.navigate(['/clients', client.id]); });
         }
         else {
-            this.service.updateClient(this.client).then(function (client) {
+            this.clientService.updateClient(this.client).then(function (client) {
                 _this.client.id = client.id;
                 _this.client.first_name = client.first_name;
                 _this.client.last_name = client.last_name;
@@ -138,7 +144,7 @@ var ClientDetailComponent = (function () {
         else {
             this.route.params.forEach(function (params) {
                 var id = +params['id'];
-                _this.service.getClient(id).then(function (client) {
+                _this.clientService.getClient(id).then(function (client) {
                     _this.populateClient(client);
                 });
             });
@@ -151,7 +157,7 @@ var ClientDetailComponent = (function () {
             styleUrls: ['client-detail.component.css'],
             templateUrl: 'client-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [client_service_1.ClientService, router_1.Router, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [client_service_1.ClientService, client_type_service_1.ClientTypeService, router_1.Router, router_1.ActivatedRoute])
     ], ClientDetailComponent);
     return ClientDetailComponent;
 }());

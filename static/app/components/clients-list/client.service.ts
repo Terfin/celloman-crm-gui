@@ -39,7 +39,7 @@ export class ClientService {
     }
     
     updateClient(client:Client) {
-        return this.http.put(`http://127.0.0.1:8001/customers/${client.id}/`, client)
+        return this.http.put(`http://127.0.0.1:8001/customers/${client.id}`, client)
             .then(
                 response => response.json() as Client
             )

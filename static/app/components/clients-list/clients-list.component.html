@@ -3,8 +3,8 @@
         <ul>
             <li *ngFor="let client of clients" class="Flexbox client-item">
 
-                    <div class="Flexbox__flex-10">
-                        <span>{{ client.first_name }} {{ client.last_name }}</span>
+                    <div class="Flexbox__flex-10 btn">
+                        <a routerLink="{{ client.id }}" routerLinkActive="active" class="link">{{ client.first_name }} {{ client.last_name }}</a>
                     </div>
                     <div class="Flexbox__flex-2">
                         <span (click)="deleteClient(client)" class="remove-btn" title="Delete Client">
